@@ -4,7 +4,7 @@ Global styles
 
 * {
     box-sizing: border-box;
-    /* border: 1px red solid; */
+    border: 1px red solid;
 }
 
 body {
@@ -78,6 +78,9 @@ Layout
     background-color: #1B244A;
     color: #EEE;
     padding: 4.25em 5.125em;
+    height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .container {
