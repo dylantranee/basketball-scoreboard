@@ -1,52 +1,33 @@
 const homeScore = document.getElementById('home-score')
 const guestScore = document.getElementById('guest-score')
+const newGame = document.getElementById('new-game')
 
 let homeCount = 0
 let guestCount = 0
 
-function homePlus1() {
-    homeCount++
-    homeScore.innerText = homeCount
-    updateLeader()
-}
+document.querySelectorAll('.btn-score').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const team = this.getAttribute('data-team')
+        const points = parseInt(this.getAttribute('data-points'), 10)
 
-function homePlus2() {
-    homeCount += 2
-    homeScore.innerText = homeCount
-    updateLeader()
-}
+        if (team === 'home') {
+            homeCount += points
+            homeScore.textContent = homeCount
+        } else if (team === 'guest') {
+            guestCount += points
+            guestScore.textContent = guestCount
+        }
+        updateLeader()
+    })
+})
 
-function homePlus3() {
-    homeCount += 3
-    homeScore.innerText = homeCount
-    updateLeader()
-}
-
-function guestPlus1() {
-    guestCount++
-    guestScore.innerText = guestCount
-    updateLeader()
-}
-
-function guestPlus2() {
-    guestCount += 2
-    guestScore.innerText = guestCount
-    updateLeader()
-}
-
-function guestPlus3() {
-    guestCount += 3
-    guestScore.innerText = guestCount
-    updateLeader()
-}
-
-function newGame() {
+newGame.addEventListener('click', function(){
     homeCount = 0
     guestCount = 0
-    homeScore.innerText = homeCount
-    guestScore.innerText = guestCount
+    homeScore.textContent = homeCount
+    guestScore.textContent = guestCount
     updateLeader()
-}
+})
 
 function updateLeader() {
     homeScore.classList.remove('leader')
